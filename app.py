@@ -1,0 +1,48 @@
+from flask import Flask, request, jsonify
+from chat import get_response
+from dotenv import load_dotenv
+import os
+from flask_cors import CORS
+import firebase_admin
+from firebase_admin import credentials, db
+
+# Load environment variables
+load_dotenv()
+
+cred = credentials.Certificate("credentials.json")
+firebase_admin.initialize_app(cred, {"databaseURL": "https://chatbot-v2-423214-default-rtdb.firebaseio.com/"})
+
+# Create Flask app
+app = Flask(__name__)
+CORS(app)  # Enable CORS for all routes
+
+# Set Flask app debug mode based on environment variable FLASK_DEBUG
+app.config['DEBUG'] = os.getenv('FLASK_DEBUG', False)
+
+@app.route("/")
+def home():
+    return jsonify({"home": "Hello!"})
+
+# Define predict route
+@app.route("/predict", methods=["POST"])
+def predict():
+    data = request.get_json()
+    text = data.get("message")
+
+    if not text:
+        return jsonify({"error": "No message provided"}), 400
+
+    response = get_response(text)
+    if not response:
+        return jsonify({"error": "Jawaban tidak ditemukan"}), 500
+    ref = db.reference('messages')
+    ref.push({
+        'message': text
+    })
+
+    return jsonify({"answer": response})
+
+
+# Run Flask app
+if __name__ == "__main__":
+    app.run()
