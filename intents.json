@@ -89,15 +89,13 @@
         "makasih",
         "makasih ya",
         "selesai",
-        "terima kasih"
+        "mksh",
+        "makasi"
       ],
       "responses": [
         "Sampai jumpa lagi!",
         "Sampai jumpa kembali!",
         "Terima kasih kembali",
-        "Terima kasih, senang dapat membantu anda",
-        "Terima kasih, senang dapat membantu anda",
-        "Terima kasih, senang dapat membantu anda",
         "Terima kasih, senang dapat membantu anda"
       ]
     },
@@ -117,10 +115,22 @@
       "patterns": [
         "aplikasi tidak bisa masuk",
         "aplikasi gagal masuk",
-        "aplikasi gabisa masuk"
+        "aplikasi gabisa masuk",
+        "aplikasi saya tidak bisa masuk"
       ],
       "responses": [
         "Halo Sobat Kios! 👋👋\n\nTerkait kendala yg dialami, Tim kami sudah membantu me-reset akun Sobat sehingga Sobat dapat login kembali.\nPastikan menggunakan password Pupuk123 ya.\nMohon konfirmasinya jika kios sudah bisa login. Terima kasih☺"
+      ]
+    },
+    {
+      "tag": "username password tidak cocok",
+      "patterns": [
+        "username dan password tidak cocok",
+        "username password sudah benar tapi tidak bisa masuk",
+        "tidak bisa login"
+      ],
+      "responses": [
+        "Halo Sobat! 👋👋\n\nTerima kasih telah menghubungi HELPDESK kami. Terkait kendala username dan password tidak cocok, sobat bisa klik \"Lupa kata sandi\" pada aplikasi ya. Jika masih mengalami kendala silahkan hubungi kami kembali dengan nomor yang telah terdaftar di Rekan. Mohon konfirmasi ulang ke kami jika kendala sudah terselesaikan ya sobat.\n\nSobat bisa pilih tombol Lupa Kata Sandi dan mengikuti tahapan berikut:\n1. Pilih tombol \"Lupa Kata Sandi di halaman\" login Rekan Kios.\n2. Masukkan nomor HP yang terdaftar di Rekan Kios.\n3. Masukkan kode OTP yang dikirimkan melalui SMS \"ADSMEDIA\".\n4. Masukkan sandi baru, pilih \"Lanjut\".\n5. Kata sandi berhasil diubah🌾\n\nTerima kasih😊"
       ]
     }
   ]
