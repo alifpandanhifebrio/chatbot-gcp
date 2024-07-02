@@ -6,24 +6,19 @@ from flask_cors import CORS
 import firebase_admin
 from firebase_admin import credentials, db
 
-# Load environment variables
 load_dotenv()
 
 cred = credentials.Certificate("credentials.json")
 firebase_admin.initialize_app(cred, {"databaseURL": "https://chatbot-v2-423214-default-rtdb.firebaseio.com/"})
 
-# Create Flask app
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
-
-# Set Flask app debug mode based on environment variable FLASK_DEBUG
+CORS(app) 
 app.config['DEBUG'] = os.getenv('FLASK_DEBUG', False)
 
 @app.route("/")
 def home():
     return jsonify({"home": "Hello!"})
 
-# Define predict route
 @app.route("/predict", methods=["POST"])
 def predict():
     data = request.get_json()
@@ -43,6 +38,5 @@ def predict():
     return jsonify({"answer": response})
 
 
-# Run Flask app
 if __name__ == "__main__":
     app.run()
